@@ -5,10 +5,6 @@ from werkzeug import secure_filename
 import os
 import shadow
 
-# 8 for slow
-# 5 for medium
-# 2 for fast
-
 def Twitter(usr,pwd,path,desc,speed):
     #browser
     driver = webdriver.Chrome(executable_path='./chromedriver.exe')
@@ -49,6 +45,49 @@ def Twitter(usr,pwd,path,desc,speed):
     driver.close()
     return
 
+def Facebook(usr,pwd,path,desc,speed):
+    driver = webdriver.Chrome(executable_path='./chromedriver.exe')
+    #<--- code to login --->
+    driver.get('https://en-gb.facebook.com/login')
+    usr_box = driver.find_element_by_id('email')
+    usr_box.send_keys(usr)
+    pwd_box = driver.find_element_by_id('pass')
+    pwd_box.send_keys(pwd)
+    login_button = driver.find_element_by_id('loginbutton')
+    login_button.submit()
+    #<--- / code to login --->
+    #Wait until login
+    sleep(speed)
+
+    #<--- code to remove opaque screen --->
+    remover = driver.find_element_by_tag_name('body').click()
+    #<--- / code to remove opaque screen --->
+    #WALL
+    give = driver.find_element_by_xpath("//*[@name='xhpc_message']")
+    #Wait for wall
+    sleep(speed)
+
+    #DESCRIPTION
+    give.send_keys(desc)
+    sleep(speed)
+
+    #ATTACH MEDIA
+    file = driver.find_element_by_xpath("//input[@data-testid='media-sprout']")
+    sleep(speed)
+
+    #sending media
+    file.send_keys("C:/Users/Ninja/Desktop/bot.png")
+    #wait while it uploads
+    sleep(speed*1.75)
+
+    #POST
+    post = driver.find_element_by_css_selector('button[data-testid="react-composer-post-button"]')
+    post.click()
+    #wait for post to be made
+    sleep(speed*1.5)
+    driver.close()
+    return
+
 app = Flask(__name__)
 
 @app.route('/', methods = ['GET'])
@@ -61,11 +100,14 @@ def go():
     filename = secure_filename(file.filename)
     media = os.path.abspath(filename)
     file.save(media)
-    un = request.form['tun']
-    up = request.form['tup']
+    tun = request.form['tun']
+    tup = request.form['tup']
+    fun = request.form['fun']
+    fup = request.form['fup']
     desc = request.form['desc']
     speed = int(request.form['speed'])
-    Twitter(un,up,media,desc,speed)
+    Twitter(tun,tup,media,desc,speed)
+    Facebook(fun,fup,media,desc,speed)
     return '''
             <script>
             alert('Success :)');
