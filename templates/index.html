@@ -7,7 +7,6 @@
     <title>Media Broadcast Portal</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
-    <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
     <div class="jumbotron jumbotron-fluid" id="titlebg"> 
@@ -21,77 +20,78 @@
                 <form method="POST" enctype="multipart/form-data">        
                     <div id="main">
                         <table>
-                        <tr>
-                            <td><b>Twitter</b></td>
-                            <td>
-                                <div class="row">
-                                    <div class="col-lg-6">
-                                        <input class="form-control" type="text" name="tun" required placeholder="Username">
+                            <tr>
+                                <td><b>Twitter</b></td>
+                                <td>
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <input class="form-control" type="text" name="tun" required placeholder="Username">
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <input class="form-control" type="password" name="tup" required placeholder="Password">
+                                        </div>
                                     </div>
-                                    <div class="col-lg-6">
-                                        <input class="form-control" type="password" name="tup" required placeholder="Password">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><b>Facebook</b></td>
+                                <td>
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <input class="form-control" type="text" name="fun" required placeholder="Username">
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <input class="form-control" type="password" name="fup" required placeholder="Password">
+                                        </div>
                                     </div>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><b>Facebook</b></td>
-                            <td>
-                                <div class="row">
-                                    <div class="col-lg-6">
-                                        <input class="form-control" type="text" name="fun" required placeholder="Username">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><b>Instagram</b></td>
+                                <td>
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <input class="form-control" type="text" name="iun" required placeholder="Username">
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <input class="form-control" type="password" name="i up" required placeholder="Password">
+                                        </div>
                                     </div>
-                                    <div class="col-lg-6">
-                                        <input class="form-control" type="password" name="fup" required placeholder="Password">
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><b>Instagram</b></td>
-                            <td>
-                                <div class="row">
-                                    <div class="col-lg-6">
-                                        <input class="form-control" type="text" name="iun" required placeholder="Username">
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <input class="form-control" type="password" name="i up" required placeholder="Password">
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><b>File</b></td>
-                            <td><input type="file" name="media" required></td>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><b>File</b></td>
+                                <td><input type="file" name="media" required></td>
                             </tr>
                             <tr>
                                 <td><b>Description</b></td>
                                 <td colspan="1"><textarea name="desc" minlength="3" rows="4" cols="48"></textarea></td>
-                        </tr>
-                        <tr>
-                            <td><b>Connection Speed</b></td>
-                            <td>
-                                <select name="speed">
-                                    <option value="2">4G Network</option>
-                                    <option value="5">3G Network</option>
-                                    <option value="8">2G Network</option>
-                                </select>
-                            </td>        
+                            </tr>
+                            <tr>
+                                <td><b>Connection Speed</b></td>
+                                <td>
+                                    <select name="speed">
+                                        <option value="2">4G Network</option>
+                                        <option value="5">3G Network</option>
+                                        <option value="8">2G Network</option>
+                                    </select>
+                                </td>        
                             </td>
                         </tr>
-                        </table>
-                        <br>
-                        <input type="submit" value="Upload" class="btn btn-success">
-                    </div>
-                </form>
-            </div>
+                    </table>
+                    <br>
+                    <input type="submit" value="Upload" class="btn btn-success">
+                </div>
+            </form>
         </div>
     </div>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="./styles.css">
 </body>
 <footer class="blog-footer">
     <p>"<strong>Media Broadcast Portal</strong>" built By <a href="#">@pavanrkadave</a>, <a href="#">@suryaxanden</a> and <a href="#">@swarupe</a>.</p>
-  </footer>
+</footer>
 </html>
