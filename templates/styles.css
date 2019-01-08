@@ -11,8 +11,6 @@
 
 #title
 {
-    /* text-align: center; */
-    /* margin: 25%; */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -37,7 +35,7 @@
 
 body
 {
-    background-color: rgba(128,128,128,.125);
+    /* background-color: rgba(128,128,128,.125); */
 }
 
 .blog-footer

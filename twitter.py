@@ -42,8 +42,8 @@ def go():
     filename = secure_filename(file.filename)
     media = os.path.abspath(filename)
     file.save(media)
-    un = request.form['username']
-    up = request.form['password']
+    un = request.form['tun']
+    up = request.form['tup']
     desc = request.form['desc']
     speed = int(request.form['speed'])
     Twitter(un,up,media,desc,speed)
