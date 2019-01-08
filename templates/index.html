@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Media Brodcast Portal</title>
+</head>
+<body>
+    <form method="POST" enctype="multipart/form-data">
+        Twitter
+        <br>
+        <br>
+        Username :
+        <input type="text" name="username" required>
+        <br>
+        Password :
+        <input type="password" name="password" required>
+        <br>
+        <br>
+        <!-- Facebook
+        <br>
+        <br>
+        Username :
+        <input type="text" name="username" required>
+        <br>
+        Password :
+        <input type="password" name="password" required>
+        <br>
+        <br>
+        Instagram:
+        <br>
+        <br>
+        Username :
+        <input type="text" name="username" required>
+        <br>
+        Password :
+        <input type="password" name="password" required>
+        <br>
+        <br> -->
+        File :
+        <input type="file" name="media" required>
+        <br>
+        Description :
+        <textarea name="desc" minlength="3"></textarea>
+        <br>        
+        Connection Speed :
+        <select name="speed">
+            <option value="2">4G</option>
+            <option value="5">3G</option>
+            <option value="8">2G</option>
+        </select>
+        <br>
+        <input type="submit">
+    </form>
+</body>
+</html>
