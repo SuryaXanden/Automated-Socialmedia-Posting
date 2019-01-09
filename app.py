@@ -78,7 +78,7 @@ def Facebook(usr,pwd,path,desc,speed):
         sleep(speed)
 
         #sending media
-        file.send_keys("C:/Users/Ninja/Desktop/bot.png")
+        file.send_keys(path)
         #wait while it uploads
         sleep(speed*1.75)
 
@@ -145,4 +145,4 @@ def go():
     '''
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=80,debug=False,threaded=True)
+    app.run(host='0.0.0.0', port=80,debug=True,threaded=True)
