@@ -23,13 +23,14 @@
 {
     background-color: rgba(64, 201, 64, 0.8);
     padding-left: 25%;
+    padding-right: 25%;
 }
 
 #card
 {
-    background-color: rgba(120, 128, 200, .45);
-    width: 55%;
+    background-color: rgba(120, 128, 200, .1);
     margin-left: 25%;
+    margin-right: 25%;
     border-radius: 3%;
 }
 
