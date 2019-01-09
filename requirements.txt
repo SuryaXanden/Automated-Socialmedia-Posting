@@ -1,0 +1,7 @@
+Flask==1.0.2
+InstagramAPI==1.0.2
+moviepy==0.2.2.11
+requests==2.20.0
+requests-toolbelt==0.7.0
+selenium==3.14.1
+Werkzeug==0.14.1
