@@ -6,8 +6,8 @@ import os
 
 def Twitter(usr,pwd,path,desc,speed):
     if usr:
-        #browser
-        driver = webdriver.Chrome(executable_path='./chromedriver.exe')
+        # twitDone = 0
+        driver = webdriver.Chrome(executable_path='./chromedriver.exe')  
         #URL
         driver.get('https://twitter.com/login')
         #USERNAME
@@ -22,18 +22,14 @@ def Twitter(usr,pwd,path,desc,speed):
         login_button = driver.find_element_by_css_selector('button.submit.EdgeButton.EdgeButton--primary.EdgeButtom--medium')
         #clicking on login
         login_button.submit()
-
         #Wait until login
         sleep(speed)
-
         #ATTACH MEDIA
         image_box = driver.find_element_by_css_selector('input.file-input.js-tooltip')
         #sending media
         image_box.send_keys(path)
-
         #wait for a bit (until its uploaded to browser maybe )
-        sleep(speed)
-
+        sleep(speed*3)
         #DESCRIPTION
         text_box = driver.find_element_by_id('tweet-box-home-timeline')
         #sending description
@@ -41,9 +37,11 @@ def Twitter(usr,pwd,path,desc,speed):
         #TWEET
         tweet_button = driver.find_element_by_css_selector('button.tweet-action.EdgeButton.EdgeButton--primary.js-tweet-btn')
         tweet_button.click()
-        sleep(speed*1.5)
+        sleep(speed*5)
+        driver.refresh()
         driver.close()
-        return
+        # twitDone = 1
+        return 1
     pass
 
 def Facebook(usr,pwd,path,desc,speed):
@@ -59,10 +57,13 @@ def Facebook(usr,pwd,path,desc,speed):
         login_button.submit()
         #<--- / code to login --->
         #Wait until login
-        sleep(speed)
-
-        #<--- code to remove opaque screen --->
+        sleep(speed*4)
         remover = driver.find_element_by_tag_name('body').click()
+        # remover = driver.find_element_by_tag_name('body').click()
+        # # sleep(speed*2)
+        #<--- code to remove opaque screen --->
+        # remover = driver.find_element_by_tag_name('body').click()
+        # # remover = driver.find_element_by_tag_name('body').click()
         #<--- / code to remove opaque screen --->
         #WALL
         give = driver.find_element_by_xpath("//*[@name='xhpc_message']")
@@ -74,30 +75,32 @@ def Facebook(usr,pwd,path,desc,speed):
         sleep(speed)
 
         #ATTACH MEDIA
-        file = driver.find_element_by_xpath("//input[@data-testid='media-sprout']")
+        # file = driver.find_element_by_xpath('//input[@data-testid="media-sprout"]')
+        file = driver.find_element_by_css_selector('input[data-testid="media-sprout"]')
         sleep(speed)
 
         #sending media
         file.send_keys(path)
         #wait while it uploads
-        sleep(speed*1.75)
+        sleep(speed*3)
 
         #POST
         post = driver.find_element_by_css_selector('button[data-testid="react-composer-post-button"]')
         post.click()
         #wait for post to be made
-        sleep(speed*1.5)
+        sleep(speed*5)
+        driver.refresh()
         driver.close()
-        return
+        # faceDone = 1
+        return 1
     pass
 
 def Instagram(usr,pwd,path,desc):
     if usr:
-        from InstagramAPI import InstagramAPI
-        InstagramAPI = InstagramAPI(usr, pwd)
-        InstagramAPI.login()
-        InstagramAPI.uploadPhoto(path, caption=desc)
-        return
+        if pwd:
+            if os.system(" instapy -u {} -p {} -f {} -t {}".format(usr,pwd,path,desc)):
+                return 1
+            return 0
     pass
 
 app = Flask(__name__)
@@ -133,16 +136,38 @@ def go():
 
     speed = int(request.form['speed'])
 
-    Twitter(tun,tup,media,desc,speed)
-    Facebook(fun,fup,media,desc,speed)
-    Instagram(iun,iup,media,desc)
+    twitter = facebook = instagram = 0
+    if tup:
+        twitter = Twitter(tun,tup,media,desc,speed)
+    if fup:
+        facebook = Facebook(fun,fup,media,desc,speed)
+    if iup:
+        instagram = Instagram(iun,iup,media,desc)
 
-    return '''
-            <script>
-            alert('Success :)');
-            window.location = "/";
-            </script>
-    '''
+    Done = []
+    if instagram:
+        Done.append('Instagram')
+    
+    if twitter:
+        Done.append('Twitter')
+
+    if facebook:
+        Done.append('Facebook')
+   
+    if Done:
+        return '''
+                <script>
+                alert('Successfully uploaded to {}');
+                window.location = "/";
+                </script>
+        '''.format(Done)
+    else:
+        return '''
+                <script>
+                alert('An error occoured while trying to do these operations');
+                window.location = "/";
+                </script>
+        '''
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=80,debug=True,threaded=True)
