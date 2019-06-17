@@ -9,6 +9,7 @@ Python, Selenium and Flask are being used to make the magic happen.
     <li>cd Automated-Socialmedia-Posting</li>
     <li>pip install -r requirements.txt</li>
     <li>python app.py</li>
+    <li>Download the latest chromedriver from http://chromedriver.chromium.org/downloads and put it in this directory</li>
 </ol>
 <strong>Guidelines</strong>
 <ul>
